@@ -11,4 +11,8 @@ app.get("/", (req, res, next) => {
 
 const port = process.env.PORT || 3000;
 
-app.listen(port, () => console.log(`listening on port ${port}`));
+db.sync().then(() => {
+  app.listen(port, () => {
+    console.log(`listening on port ${port}`);
+  });
+});
